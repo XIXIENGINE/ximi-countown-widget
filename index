@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시시 클라우드 위젯</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: transparent;
+            font-family: 'Nanum Gothic', sans-serif;
+            overflow: hidden;
+        }
+
+        .widget-container {
+            position: relative;
+            width: 350px; 
+            height: 350px;
+            /* 이미지 파일명이 업로드한 것과 정확히 일치해야 함 */
+            background: url('ChatGPT_Image_2026년_2월_8일_오전_11_16_01-removebg-preview.png') no-repeat center center;
+            background-size: contain;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .text-overlay {
+            text-align: center;
+            color: #6a5e8a; 
+            margin-top: 20px; /* 구름의 도톰한 부분에 맞게 글자 위치 조정 */
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+        }
+
+        .title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .count {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="widget-container">
+        <div class="text-overlay">
+            <div class="title">시시와 함께한 지</div>
+            <div class="count" id="anniversary">0일</div>
+        </div>
+    </div>
+
+    <script>
+        // ▼ 시시를 처음 만난 날짜를 이곳에 적어주세요! (년-월-일)
+        const startDate = new Date("2025-07-11"); 
+        const today = new Date();
+        const diffInMs = today - startDate;
+        const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24)) + 1;
+        document.getElementById('anniversary').innerText = diffInDays + "일";
+    </script>
+</body>
+</html>
